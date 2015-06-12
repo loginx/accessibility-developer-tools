@@ -75,8 +75,8 @@ module.exports = function(grunt) {
             {
               config: 'gh-release.remote',
               type: 'input',
-              message: 'Git Remote (usually GoogleChrome or origin)',
-              default: 'GoogleChrome',
+              message: 'Git Remote (usually upstream or origin)',
+              default: 'upstream',
               validate: function(val) {
                 return (grunt.util._.size(val) > 0);
               }
