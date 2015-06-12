@@ -60,6 +60,7 @@ module.exports = function(grunt) {
 
     bump: {
       options: {
+        prereleaseName: 'rc',
         files: ['package.json', 'bower.json'],
         updateConfigs: ['pkg'],
         pushTo: "<%= grunt.config.get('gh-release.remote') %>",
