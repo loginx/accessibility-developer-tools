@@ -194,8 +194,8 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerTask('release', function(type) {
-    if (typeof type === 'undefined' || type === null) {
+  grunt.registerTask('release', function(releaseType) {
+    if (typeof releaseType === 'undefined' || releaseType === null) {
       grunt.fail.fatal('You must specify a release type. i.e. grunt release:prerelease');
     }
 
@@ -204,8 +204,8 @@ module.exports = function(grunt) {
       'build',
       'test:unit',
       'copy:dist',
-      'bump-only:' + type,
-      'changelog:' + type,
+      'bump-only:' + releaseType,
+      'changelog:' + releaseType,
       'bump-commit',
       'gh-release'
     ]);
