@@ -68,6 +68,14 @@ module.exports = function(grunt) {
       }
     },
 
+    coffee: {
+      compile: {
+        files: {
+          '.tmp/util/gh_repo.js': 'src/util/gh_repo.coffee'
+        }
+      }
+    },
+
     prompt: {
       'gh-release': {
         options: {
@@ -143,6 +151,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('gh-release', function() {
+    grunt.task.requires('coffee:compile');
     var config = grunt.config.get('gh-release');
     var pkg = grunt.config.get('pkg');
     var done = this.async();
@@ -207,6 +216,7 @@ module.exports = function(grunt) {
       'bump-only:' + releaseType,
       'changelog:' + releaseType,
       'bump-commit',
+      'coffee:compile',
       'gh-release'
     ]);
   });
